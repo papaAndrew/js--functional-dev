@@ -1,0 +1,45 @@
+{
+  "name": "js--functional-dev",
+  "version": "1.0.0",
+  "description": "Functional development basics. Asynchronous code. Homework #24",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "lint": "prettier --check . && eslint --ext .js,.ts . && tsc --noEmit",
+    "lint:fix": "prettier --write . && eslint . --fix --ext .js,.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/papaAndrew/js--functional-dev.git"
+  },
+  "author": "papaAndrew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/papaAndrew/js--functional-dev/issues"
+  },
+  "homepage": "https://github.com/papaAndrew/js--functional-dev#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-typescript": "^7.14.5",
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ],
+    "*.{css,md,yml}": "prettier --write"
+  }
+}
