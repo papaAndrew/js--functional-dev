@@ -1,5 +1,4 @@
-Домашнее задание
----
+## Домашнее задание
 
 Реализация типовых задач с использованием OOП / ФП с покрытием кода тестами
 
@@ -31,7 +30,7 @@ console.log(hof(3, 4)(5, 6)(7)); // 25
 console.log(hof(4, 5)(6)(7, 8)); // 30
 console.log(hof(5)(6)(7)(8)(9)); // 35
 Написать функцию сумматор. При вызове функции с аргументами она суммирует переданные значения (полезно прочитать про методы .valueOf и .toString)
-const sum = function() { /* put your code here */};
+const sum = function() { /_ put your code here _/};
 
 alert(sum()); // 0
 alert(s(1)); // 1
@@ -46,19 +45,19 @@ alert(sum3(6)); // 9
 const runner = new Parallel(2);
 
 console.log(await runner
-  .jobs(
-    () => new Promise((resolve) => setTimeout(resolve, 10, 1)),
-    () => new Promise((resolve) => setTimeout(resolve, 50, 2)),
-    () => new Promise((resolve) => setTimeout(resolve, 20, 3)),
-    () => new Promise((resolve) => setTimeout(resolve, 90, 4)),
-    () => new Promise((resolve) => setTimeout(resolve, 30, 5)),
-  )) // [1, 3, 2, 4, 5];
+.jobs(
+() => new Promise((resolve) => setTimeout(resolve, 10, 1)),
+() => new Promise((resolve) => setTimeout(resolve, 50, 2)),
+() => new Promise((resolve) => setTimeout(resolve, 20, 3)),
+() => new Promise((resolve) => setTimeout(resolve, 90, 4)),
+() => new Promise((resolve) => setTimeout(resolve, 30, 5)),
+)) // [1, 3, 2, 4, 5];
 Реализовать фукнцию, возвращающую развернутую по спирали матрицу (любой размерности)
 spiral([
-  [0,  1,  2,  3,  4],
-  [5,  6,  7,  8,  9],
-  [10, 11, 12, 13, 14],
-  [15, 16, 17, 18, 19]
+[0, 1, 2, 3, 4],
+[5, 6, 7, 8, 9],
+[10, 11, 12, 13, 14],
+[15, 16, 17, 18, 19]
 ]); // [0, 1, 2, 3, 4, 9, 14, 19, 18, 17, 16, 15, 10, 5, 6, 7, 8, 13, 12, 11]
 Реализовать функцию, реализующую сортировку с учетом правил semver
 
