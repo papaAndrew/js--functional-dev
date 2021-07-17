@@ -1,3 +1,31 @@
+function infiniteCurry(fn) {
+  const next = (...args) => {
+    //const sum = args.reduce((acc, a) => fn.call(fn, acc, a), 0);
+
+    const func = function (x) {
+      if (!x) {
+        return 0;
+      }
+      return next(...args, x);
+    };
+
+    func.toString = () => args.reduce((acc, a) => fn.call(fn, acc, a), 0); // Переопределяем метод toString
+    func.valueOf = 0; // Перезаписываем valueOf
+
+    return func;
+  };
+  return next();
+}
+
+const infSumma = infiniteCurry((a, b) => a + b);
+//console.log(infSumma(1)(2));
+
+const s3 = infSumma(3);
+
+console.log(s3(5));
+console.log(s3(6));
+
+/*
 function getDog(name = 0) {
   function Dog(name) {
     this.name = name;

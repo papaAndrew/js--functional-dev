@@ -35,14 +35,14 @@ describe("Functional development", () => {
   });
 
   it("function sumMatter()", () => {
-    expect(sumMatter().toString()).toBe(0);
-    expect(sumMatter(1).toString()).toBe(1);
-    expect(sumMatter(1)(2).toString()).toBe(3);
-    expect(sumMatter(3)(4)(5).toString()).toBe(12);
+    expect(sumMatter().toString()).toBe("0");
+    expect(sumMatter(1).toString()).toBe("1");
+    expect(sumMatter(1)(2).toString()).toBe("3");
+    expect(sumMatter(3)(4)(5).toString()).toBe("12");
 
     const s3 = sumMatter(3);
 
-    expect(s3(5).toString()).toBe(8);
-    expect(s3(6).toString()).toBe(9);
+    expect(s3(5).toString()).toBe("8");
+    expect(s3(6).toString()).toBe("9");
   });
 });
