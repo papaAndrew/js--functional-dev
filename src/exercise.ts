@@ -15,19 +15,17 @@ export function withSumma(func: CalcFunction): CombinedFunction {
 export function infiniteCurry(fn: CalcFunction): CombinedFunction {
   const next = (...args: number[]) => {
     return (x?: number) => {
-      if (!x) {
-        return args.reduce(
-          (acc: number, a: number) => fn.call(fn, acc, a) as number,
-          0
-        );
+      if (x) {
+        return next(...args, x);
       }
-      return next(...args, x);
+      return args.reduce(
+        (acc: number, a: number) => fn.call(fn, acc, a) as number,
+        0
+      );
     };
   };
   return next();
 }
-
-//export type AppendingFunction = (valueAdd: number) => CalcFunction;
 
 function infiniteCurrySum(fn: CalcFunction): CombinedFunction {
   const next = function (args: number[] = []): CombinedFunction {

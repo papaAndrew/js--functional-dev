@@ -6,7 +6,7 @@ import {
   CurriedFunction,
 } from "./exercise";
 
-describe("Functional development", () => {
+describe.skip("Functional development", () => {
   it("curry Summa function", () => {
     const curriedSumma = withSumma(
       (a: number, b: number, c: number, d: number, e: number) =>
