@@ -7,7 +7,7 @@ export class TaskQueue<T> {
     this.push(taskList);
   }
 
-  public push(list: PromiseQued<T>[]) {
+  public push(list: PromiseQued<T>[]): void {
     this._queue = this._queue.concat(list);
   }
 

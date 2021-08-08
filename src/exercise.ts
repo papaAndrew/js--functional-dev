@@ -1,5 +1,5 @@
-export type CalcFunction = (...args: number[]) => number;
-export type CurriedFunction = (...args: number[]) => CurriedFunction;
+type CalcFunction = (...args: number[]) => number;
+type CurriedFunction = (...args: number[]) => CurriedFunction;
 export type CombinedFunction = (...args: number[]) => CombinedFunction | number;
 
 export function withSumma(func: CalcFunction): CombinedFunction {

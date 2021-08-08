@@ -36,10 +36,10 @@ export class Sequencer<T> {
     }
   };
 
-  public run(queItemHandler: QueItemHandler<T>) {
+  public run(queItemHandler: QueItemHandler<T>): Promise<T[]> {
     const queue = this._queue;
     if (queue.isEnded()) {
-      return Promise.resolve();
+      return Promise.resolve([]);
     }
 
     this._deferred = new Deferred();

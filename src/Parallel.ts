@@ -1,23 +1,22 @@
-import { Sequenser, Queue, QueItem } from "./Sequencer";
+import { Sequencer } from "./Sequencer";
+import { PromiseQued, TaskQueue } from "./TaskQueue";
 
-export type TaskResolvingNumber = QueItem<number>;
+//export type TaskResolvingNumber = PromiseQued<number>;
 
-export class Parallel {
-  private _threadsLimit = 0;
+export class Parallel<T> {
+  private _threadsLimit: number;
 
-  constructor(threadsLimit: number) {
+  constructor(threadsLimit = 1) {
     this._threadsLimit = threadsLimit;
   }
 
-  public jobs(...tasks: QueItem<number>[]) {
-    if (!this._threadsLimit) {
-      return;
-    }
+  private async _queItemHandler(item: PromiseQued<T>) {
+    return await item();
+  }
 
-    return Promise.allSettled(
-      new Sequenser(new Queue<number>(tasks), this._threadsLimit).run(
-        async (task) => await task()
-      )
+  public jobs(...tasks: PromiseQued<T>[]): Promise<T[]> {
+    return new Sequencer<T>(new TaskQueue(tasks), this._threadsLimit).run(
+      this._queItemHandler
     );
   }
 }

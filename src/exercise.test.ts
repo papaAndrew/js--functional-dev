@@ -1,12 +1,6 @@
-import {
-  withSumma,
-  sumMatter,
-  infiniteCurry,
-  CalcFunction,
-  CurriedFunction,
-} from "./exercise";
+import { withSumma, sumMatter, infiniteCurry } from "./exercise";
 
-describe.skip("Functional development", () => {
+describe("Functional development", () => {
   it("curry Summa function", () => {
     const curriedSumma = withSumma(
       (a: number, b: number, c: number, d: number, e: number) =>

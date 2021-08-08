@@ -1,7 +1,7 @@
 import { PromiseQued, TaskQueue } from "./TaskQueue";
 import { Sequencer } from "./Sequencer";
 
-const sleep = (x: number) => new Promise((res) => setTimeout(res, x));
+//const sleep = (x: number) => new Promise((res) => setTimeout(res, x));
 
 describe("Sequencer", () => {
   it("Sequencer is a class", () => {
@@ -40,15 +40,15 @@ describe("Sequencer", () => {
         .then((res) => expect(res).toEqual(resList));
     });
 
-    it("only specified number of parallel task executed", async () => {
+    it("maximum specified number of tasks can be executed one time", async () => {
       const taskList: PromiseQued<void>[] = [
         () => Promise.resolve(fn()),
         () => Promise.resolve(fn()),
         () => Promise.resolve(fn()),
       ];
 
-      new Sequencer(new TaskQueue(taskList), 1).run(async (job) => await job());
-      expect(fn).toBeCalledTimes(1);
+      new Sequencer(new TaskQueue(taskList), 2).run(async (job) => await job());
+      expect(fn).toBeCalledTimes(2);
       /*
       await new Sequencer(new TaskQueue(taskList), 2).run(async (job) => await job());
       expect(fn).toBeCalledTimes(2);
